@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Test</title>
-    <style>
-        .error {
-            color: red;
-            display: none;
-        }
-    </style>
+    <title>Login page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src=""></script>
 </head>
 <body>
     <header class="header">
-        <h1>Login Test</h1>
+        <h1 style="color: green;">Login Test</h1>
     </header>
 
     <div class="Login">
-        <p style="font-size: 20px;">Username</p>
-        <input type="text" id="username" class="inputname" placeholder="กรุณาใส่ชื่อ">
-        <p class='user error' id="user-error">กรุณาใส่ชื่อ</p>
+            <p style="font-size: 20px;">Username :</p>
+            <input type="username" id="username" class="inputname"
+            placeholder="กรุณาใส่ชื่อ">
 
-        <p style="font-size: 20px;">Password</p>
-        <input type="password" id="password" placeholder="กรุณากรอกรหัส (อย่างน้อย 8 ตัว)">
-        <p class='pass error' id="pass-error">กรุณากรอกรหัส (อย่างน้อย 8 ตัว)</p>
+            <p style="font-size: 20px;">password :</p>
+            <input type="password" id="password" class="password"
+             placeholder="กรุณากรอกรหัส">
 
-        <button onclick="comform()" class="comform">ยืนยันตัวตน</button>
+            <button onclick="comform()" class="comform">ยืนยันตัวตน เพื่อรับเงินฟรี!! 30ล้านบาท</button>
     </div>
-
     <script>
-        function comform() {
+          function comform() {
             // รับค่าจากฟอร์ม
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
@@ -45,8 +40,8 @@
                 document.getElementById("user-error").style.display = "none";
             }
 
-            // ตรวจสอบช่อง Password ว่ามีอย่างน้อย 8 ตัว
-            if (password === "" || password.length < 8) {
+            // ตรวจสอบช่อง Password
+            if (password === "" || password.length > 8) {
                 document.getElementById("pass-error").style.display = "block";
                 isValid = false;
             } else {
@@ -59,5 +54,52 @@
             }
         }
     </script>
+    <style>
+        .user , .pass{
+            font-size: 11px;
+            color: gray;
+            justify-items: center;
+            display: flex;
+        }
+
+        body{
+            background-image: url('https://static.vecteezy.com/system/resources/previews/033/692/798/non_2x/hundred-dollar-bills-on-wooden-floor-3d-render-illustration-money-and-dollar-bills-are-spread-out-on-the-table-ai-generated-free-photo.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .Login {
+            color: red;
+            justify-items: center;
+            display: flex;
+        }
+
+        .header{
+            font-size: 30px;
+            justify-items: center;
+            display: flex;
+        }
+        .inputname , .password , .use , .pass{
+            justify-items: center;
+            display: flex;
+            margin: auto;
+        }
+
+        .inputname , .password{
+            background-color: rgba(220, 220, 220, 0.342);
+        }
+        .comform{
+            background-color: lightgreen;
+        }
+
+        .comform:hover{
+            background-color: green;
+            border-radius: 10px;
+            transition: ease 0.5s;
+        }
+    </style>
+
 </body>
 </html>
