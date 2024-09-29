@@ -1,29 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src=""></script>
+    <title>Login Test</title>
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <h1>Login Test</h1>
     </header>
-    
+
     <div class="Login">
-            <p>username</p>
-            <input type="username" id="username" class="inputname"
-            placeholder="กรุณาใส่ชื่อ">
-            <p class='user'>กรุณาใส่ชื่อ</p>
-            <p>password</p>
-            <input type="password" id="password" placeholder="กรุณากรอกรหัส">
-            <p class='pass'>กรุณากรอกรหัส</p>
-        
+        <p style="font-size: 20px;">Username</p>
+        <input type="text" id="username" class="inputname" placeholder="กรุณาใส่ชื่อ">
+        <p class='user error' id="user-error">กรุณาใส่ชื่อ</p>
+
+        <p style="font-size: 20px;">Password</p>
+        <input type="password" id="password" placeholder="กรุณากรอกรหัส (อย่างน้อย 8 ตัว)">
+        <p class='pass error' id="pass-error">กรุณากรอกรหัส (อย่างน้อย 8 ตัว)</p>
+
+        <button onclick="comform()" class="comform">ยืนยันตัวตน</button>
     </div>
 
-    <p>hello world</p>
+    <script>
+        function comform() {
+            // รับค่าจากฟอร์ม
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
 
+            // ตัวแปรเช็คสถานะการตรวจสอบ
+            let isValid = true;
+
+            // ตรวจสอบช่อง Username
+            if (username === "") {
+                document.getElementById("user-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("user-error").style.display = "none";
+            }
+
+            // ตรวจสอบช่อง Password ว่ามีอย่างน้อย 8 ตัว
+            if (password === "" || password.length < 8) {
+                document.getElementById("pass-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("pass-error").style.display = "none";
+            }
+
+            // ถ้าผ่านการตรวจสอบ ให้โยงไปยังหน้าอื่น
+            if (isValid) {
+                window.location.href = "nextpage.html"; // ใส่ลิงค์หน้าใหม่ที่ต้องการโยงไป
+            }
+        }
+    </script>
 </body>
 </html>
